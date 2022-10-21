@@ -1,0 +1,21 @@
+{
+    "name": "fireworkteam/router",
+    "description": "A part of Firework, that controls routing",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Firework\\Router\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "fireworkteam",
+            "email": "svintsoff.ya@yandex.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0"
+    }
+}
