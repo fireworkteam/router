@@ -8,7 +8,7 @@ class Router
 {
     static function route()
     {
-        $controllerName = "Main";
+        $controllerName = "index";
         $actionName = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -23,23 +23,24 @@ class Router
             $actionName = $routes[2];
         }
 
-        $modelName = $controllerName . '_Model';
-        $controllerName = $controllerName . "_Controller";
+        $modelName = $controllerName . 'Model';
+        $controllerName = $controllerName . "Controller";
 
         $modelFile = strtolower($modelName) . '.php';
-        $modelPath = "src/models/" . $modelFile;
+        $modelPath = "/src/models/" . $modelFile;
 
         if (file_exists($modelPath))
         {
             include $modelPath;
         }
 
-        $controllerFile = strtolower($controllerName) . '.php';
+
+        $controllerFile = $controllerName . '.php';
         $controllerPath = "src/controllers/" . $controllerFile;
 
-        if (file_exists($controllerFile))
+        if (file_exists($controllerPath))
         {
-            include $controllerPath;
+            require_once $controllerPath;
         } else {
             Router::errorPage404();
         }
@@ -60,6 +61,6 @@ class Router
         $host = 'http://' . $_SERVER['HTTP_HOST'] . '/';
         header('HTTP/1.1 404 Not Found');
         header("Status: 404 Not Found");
-        header('Location:' . $host . '404');
+        header('Location:' . $host . 'e404');
     }
 }
